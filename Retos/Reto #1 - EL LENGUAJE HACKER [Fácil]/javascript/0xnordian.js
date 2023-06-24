@@ -10,7 +10,7 @@ const dict = new Map([
   ["i", "1"],
   ["j", ",_|"],
   ["k", ">|"],
-  ["l", "1"],
+  ["l", "£"],
   ["m", "/\\/\\"],
   ["n", "^/"],
   ["o", "0"],
@@ -26,13 +26,12 @@ const dict = new Map([
 ]);
 
 function hackerLang(str) {
-  const isValidInput = /^[a-zA-Z]+$/.test(str);
+  const isValidInput = /^[a-zA-Z ]+$/.test(str);
   if (isValidInput) {
     return str
       .toLowerCase()
       .split("")
-      .map((item) => dict.get(item))
-      .join("");
+      .map((item) => (item !== " " ? dict.get(item.toLowerCase()) : " ")).join("");
   } else {
     alert("Wrong input, only characters from aA to zZ are valid");
     throw new Error(
@@ -40,3 +39,5 @@ function hackerLang(str) {
     );
   }
 }
+
+hackerLang("This is my secret hacker converter");
