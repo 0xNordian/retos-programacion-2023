@@ -8,6 +8,7 @@ const points = new Map([
 function tenisGame(arr) {
   let p1 = 0;
   let p2 = 0;
+  arr.map(item => (item !== "P1" && item !== "P2") ? (() => { throw new Error("Wrong input. You can only enter 'P1' or 'P2' as values"); })() : "");
   for(let i = 0; i < arr.length; i++) {
     arr[i] === "P1" ? p1++ : p2++;
     if(p1 >= 3 && p2 >= 3){
